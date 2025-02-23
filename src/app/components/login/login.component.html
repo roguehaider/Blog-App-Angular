@@ -1,0 +1,56 @@
+<div class="container">
+  <mat-card class="login-card">
+    <h2>Login To Rogue Blogs</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="username" />
+        <mat-error *ngIf="username?.hasError('required')"
+          >Email is required</mat-error
+        >
+        <mat-error *ngIf="username?.hasError('minlength')"
+          >Email must be at least 3 characters long</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          class="hide-password-btn"
+          (click)="togglePasswordVisibility()"
+          type="button"
+        >
+          <mat-icon>{{
+            hidePassword ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
+        <mat-error *ngIf="password?.hasError('required')"
+          >Password is required</mat-error
+        >
+        <mat-error *ngIf="password?.hasError('minlength')"
+          >Password must be at least 6 characters long</mat-error
+        >
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </button>
+
+      <mat-card-actions>
+        <a mat-button routerLink="/signup">Don't have an account? Sign Up</a>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

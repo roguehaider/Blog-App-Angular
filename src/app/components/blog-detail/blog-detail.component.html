@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="layout">
+  <app-sidebar></app-sidebar>
+  <div class="content">
+    <div *ngIf="blog$ | async as blog">
+      <div class="blog-detail">
+        <button class="back-button" (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <div
+          class="blog-header"
+          [style.backgroundImage]="'url(' + blog.imageUrl + ')'"
+        >
+          <h1 class="blog-title">{{ blog.title }}</h1>
+        </div>
+        <div class="blog-content">
+          <p class="blog-description">{{ blog.description }}</p>
+        </div>
+        <div class="blog-meta">
+          <span class="meta-item"
+            >Created On: {{ blog.createdOn | date : "medium" }}</span
+          >
+          <span class="meta-item">Created By: {{ blog.createdBy }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <p>Loading blog details...</p>
+</ng-template>

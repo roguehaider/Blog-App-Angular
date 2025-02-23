@@ -1,0 +1,27 @@
+
+// import Swal from 'sweetalert2';
+// Swal.fire('Success', 'Operation completed successfully!', 'success');
+// Swal.fire('Error', 'Something went wrong!', 'error');
+// Swal.fire('Warning', 'Are you sure you want to proceed?', 'warning');
+// Swal.fire('Info', 'Here is some important information.', 'info');
+// Swal.fire('Question', 'Do you want to continue?', 'question');
+
+
+
+
+// import { MatSnackBar } from '@angular/material/snack-bar';
+// this.snackBar.open('Login Successful!', 'Close', {
+//             duration: 3000,
+//           });
+
+
+//           window.location.reload();
+
+
+// 1.Define Models
+// 2.Create Actions
+// 3.Set Up Reducers
+// 4.Create Selectors
+// 5.Implement Effects for API Calls
+// 6.Set Up Store in app.module.ts
+// 7.Use Store in Component (blog-slider.component.ts)

@@ -1,0 +1,89 @@
+<div class="blog-slider" [class.expanded]="isExpanded">
+  <div class="filter-container">
+    <select
+      *ngIf="showCategory"
+      [ngModel]="selectedCategory$ | async"
+      (ngModelChange)="onCategoryChange($event)"
+    >
+      <option value="all">All Categories</option>
+      <option *ngFor="let category of categories$ | async" [value]="category">
+        {{ category }}
+      </option>
+    </select>
+
+    <input
+      type="text"
+      [ngModel]="searchQuery$ | async"
+      (ngModelChange)="onSearchQueryChange($event)"
+      placeholder="Search blogs..."
+    />
+
+    <button class="expand-button" (click)="toggleExpand()">
+      {{ isExpanded ? "Collapse All" : "Expand All" }}
+    </button>
+  </div>
+
+  <div class="slider-controls">
+    <button
+      class="slider-button left"
+      (click)="scrollSlider(-1)"
+      *ngIf="showLeftArrow"
+    >
+      &#10094;
+    </button>
+    <div class="slider-container">
+      <div class="blog-block" *ngFor="let blog of blogs$ | async">
+        <img [src]="blog.imageUrl" alt="Blog Image" class="blog-image" />
+        <div class="blog-content">
+          <div class="blog-head">
+            <h3 class="blog-title" [innerHTML]="blog.highlightedTitle"></h3>
+            <div class="blog-actions">
+              <button mat-button color="primary" (click)="openEditDialog(blog)">
+                <mat-icon>border_color</mat-icon>
+              </button>
+              <button mat-button color="warn" (click)="deleteBlog(blog.id)">
+                <mat-icon>delete_outline</mat-icon>
+              </button>
+            </div>
+          </div>
+          <p
+            class="blog-description"
+            [innerHTML]="blog.highlightedDescription | truncateHtml : 25"
+            [title]="blog.description"
+          ></p>
+          <div class="blog-meta">
+            <span
+              class="blog-category"
+              [innerHTML]="blog.highlightedCategory"
+            ></span>
+            <span
+              class="blog-created-by"
+              [innerHTML]="blog.highlightedCreatedBy"
+              appHighlight
+              [highlightColor]="'yellow'"
+            ></span>
+          </div>
+
+          <div class="blog-created-on">
+            <span>{{ blog.createdOn | date : "mediumDate" }}</span>
+          </div>
+
+          <button class="read-more-button" [routerLink]="['/blog', blog.id]">
+            Read More
+          </button>
+        </div>
+      </div>
+    </div>
+    <button
+      class="slider-button right"
+      (click)="scrollSlider(1)"
+      *ngIf="showRightArrow"
+    >
+      &#10095;
+    </button>
+  </div>
+
+  <div class="no-results-message" *ngIf="(blogs$ | async)?.length === 0">
+    No blogs found matching your search criteria.
+  </div>
+</div>

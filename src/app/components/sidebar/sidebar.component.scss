@@ -1,0 +1,34 @@
+.sidenav-container {
+  height: 100vh;
+}
+
+.active-link {
+  background-color: #8c98da;
+  font-weight: bold;
+}
+
+mat-sidenav {
+  width: 250px;
+  background: #f4f4f4;
+}
+
+mat-nav-list {
+  padding: 10px;
+}
+
+mat-list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+}
+
+.side-bar-icon {
+  font-size: 25px;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+
+.sidebar-item-name {
+  margin: 0;
+}

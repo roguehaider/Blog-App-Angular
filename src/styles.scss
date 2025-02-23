@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+
+@use "@angular/material" as mat;
+
+$light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: mat.define-palette(mat.$indigo-palette),
+      accent: mat.define-palette(mat.$pink-palette),
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+$dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: mat.define-palette(mat.$grey-palette, 900),
+      accent: mat.define-palette(mat.$grey-palette, 50),
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+@include mat.all-component-themes($light-theme);
+
+.dark-theme {
+  @include mat.all-component-colors($dark-theme);
+}
+
+.dark-theme {
+  .mat-sidenav-container {
+    background-color: #121212;
+    color: white;
+  }
+
+  .mat-sidenav {
+    background-color: #1e1e1e;
+    color: white;
+  }
+
+  .mat-nav-list {
+    background-color: inherit;
+    color: inherit;
+  }
+
+  .mat-list-item {
+    color: white;
+  }
+
+  .mat-icon {
+    color: white;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

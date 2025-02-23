@@ -1,0 +1,84 @@
+<h2 mat-dialog-title>Edit Profile</h2>
+<mat-dialog-content>
+  <form [formGroup]="profileForm">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="firstName" />
+      <mat-error
+        *ngIf="
+          profileForm.get('firstName')?.invalid &&
+          profileForm.get('firstName')?.touched
+        "
+      >
+        First name is required (min 2 characters).
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="lastName" />
+      <mat-error
+        *ngIf="
+          profileForm.get('lastName')?.invalid &&
+          profileForm.get('lastName')?.touched
+        "
+      >
+        Last name is required (min 2 characters).
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+      <mat-error
+        *ngIf="
+          profileForm.get('email')?.invalid && profileForm.get('email')?.touched
+        "
+      >
+        Enter a valid email.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Phone Number</mat-label>
+      <input matInput formControlName="phoneNumber" />
+      <mat-error
+        *ngIf="
+          profileForm.get('phoneNumber')?.invalid &&
+          profileForm.get('phoneNumber')?.touched
+        "
+      >
+        Enter a valid 10-digit phone number.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Date of Birth</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error
+        *ngIf="
+          profileForm.get('dateOfBirth')?.invalid &&
+          profileForm.get('dateOfBirth')?.touched
+        "
+      >
+        Date of birth is required.
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closeDialog()">Cancel</button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="saveProfile()"
+    [disabled]="profileForm.invalid"
+  >
+    Save
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,14 @@
+.all-blogs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1500px;
+  width: 100%;
+
+  .blog-slider-wrapper {
+    flex: 1;
+    overflow: hidden;
+  }
+}

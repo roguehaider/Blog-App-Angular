@@ -40,3 +40,6 @@ testem.log
 .DS_Store
 Thumbs.db
 config.bat
+
+# local env files
+.env*.local
